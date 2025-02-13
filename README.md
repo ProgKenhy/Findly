@@ -36,8 +36,11 @@ npm install
 ```bash
 yarn install
 ```
-3. Запуск проекта
-Для Android:
+
+Install the following packages:
+```bash
+npx expo install react-native-svg lucide-react-native
+```
 
 ```bash
 npx react-native run-android
