@@ -1,16 +1,84 @@
-# Starter base
+# Findly - Мобильное приложение с картой
 
-A starting point to help you set up your project quickly and use the common components provided by `react-native-reusables`. The idea is to make it easier for you to get started.
+Это мобильное приложение, разработанное с использованием React Native и с возможностью отображения позиций пользователей на карте.
 
-## Features
+## Структура проекта
 
-- NativeWind v4
-- Dark and light mode
-  - Android Navigation Bar matches mode
-  - Persistent mode
-- Common components
-  - ThemeToggle, Avatar, Button, Card, Progress, Text, Tooltip
+Проект использует следующий стек технологий:
+- **React Native** для разработки мобильного приложения.
+- **FastAPI** для создания бэкенда.
+- **PostgreSQL** для хранения данных.
 
-<img src="https://github.com/mrzachnugent/react-native-reusables/assets/63797719/42c94108-38a7-498b-9c70-18640420f1bc"
-     alt="starter-base-template"
-     style="width:270px;" />
+## Требования
+
+Для работы с проектом вам потребуется:
+- [Node.js](https://nodejs.org/) (рекомендуемая версия 14.x или выше).
+- [npm](https://www.npmjs.com/) или [Yarn](https://yarnpkg.com/).
+- [Android Studio](https://developer.android.com/studio) (для Android) или [Xcode](https://developer.apple.com/xcode/) (для iOS).
+
+## Установка и запуск проекта
+
+### 1. Клонировать репозиторий
+
+```bash
+git clone https://github.com/ProgKenhy/Findly.git
+cd Findly
+```
+
+2. Установить зависимости
+Для установки зависимостей, выполните одну из следующих команд:
+
+С использованием npm:
+```bash
+npm install
+```
+С использованием Yarn:
+```bash
+yarn install
+```
+3. Запуск проекта
+Для Android:
+
+```bash
+npx react-native run-android
+```
+
+Для iOS:
+
+```bash
+npx react-native run-ios
+```
+4. Настройка переменных окружения
+Если проект использует переменные окружения (например, для API-ключей или конфигурации сервера), создайте файл .env в корне проекта и добавьте необходимые переменные. Пример:
+
+API_URL=https://api.yoursite.com
+DATABASE_URL=postgres://user:password@localhost/dbname
+Не забудьте заменить пример на свои данные.
+
+5. Подключение к базе данных (PostgreSQL)
+Если проект работает с базой данных, настройте PostgreSQL:
+
+Установите PostgreSQL на свой локальный сервер или используйте облачный сервис.
+Создайте базу данных и подключитесь к ней с помощью настроек из .env.
+6. Дополнительные команды
+Для запуска бэкенда (если используется FastAPI):
+```bash
+uvicorn main:app --reload
+```
+Структура проекта
+Вот структура папок и файлов:
+
+plaintext
+Copy
+Edit
+.
+├── android                  # Android-часть проекта
+├── ios                      # iOS-часть проекта
+├── src                      # Исходный код React Native
+│   ├── components           # Компоненты приложения
+│   ├── screens              # Экраны приложения
+│   └── services             # Логика API и данных
+├── package.json             # Зависимости и конфигурация проекта
+└── README.md                # Документация по проекту
+Контрибьюторы
+Если хотите внести изменения или улучшения в проект, создавайте pull request.
