@@ -64,20 +64,3 @@ DATABASE_URL=postgres://user:password@localhost/dbname
 ```bash
 uvicorn main:app --reload
 ```
-Структура проекта
-Вот структура папок и файлов:
-
-plaintext
-Copy
-Edit
-.
-├── android                  # Android-часть проекта
-├── ios                      # iOS-часть проекта
-├── src                      # Исходный код React Native
-│   ├── components           # Компоненты приложения
-│   ├── screens              # Экраны приложения
-│   └── services             # Логика API и данных
-├── package.json             # Зависимости и конфигурация проекта
-└── README.md                # Документация по проекту
-Контрибьюторы
-Если хотите внести изменения или улучшения в проект, создавайте pull request.
