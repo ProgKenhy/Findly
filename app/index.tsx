@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import {Pencil} from '~/lib/icons/Pencil';
 import {Avatar, AvatarFallback, AvatarImage} from '~/components/ui/avatar';
 import {Button} from '~/components/ui/button';
 import {CardContent, CardFooter, CardHeader} from '~/components/ui/card';
 import {Text} from '~/components/ui/text';
+import {ThemeToggle} from '~/components/ThemeToggle';
 // import {Chart} from '~/components/ui/chart'; // Hypothetical chart component
 
 const GITHUB_AVATAR_URI =
@@ -12,6 +13,7 @@ const GITHUB_AVATAR_URI =
 
 export default function UserProfileScreen() {
     const [progress, setProgress] = React.useState(78);
+    const width = Dimensions.get('window').width;
 
     function updateProgressValue() {
         setProgress(Math.floor(Math.random() * 100));
@@ -19,31 +21,38 @@ export default function UserProfileScreen() {
 
     return (
         <View className="flex-1 p-4 bg-secondary">
+
             {/* Header Section */}
-            <CardHeader className="flex-row items-center gap-4">
-                <Avatar alt="Avatar" className="w-16 h-16">
-                    <AvatarImage source={{uri: GITHUB_AVATAR_URI}}/>
-                    <AvatarFallback>
-                        <Text>RS</Text>
-                    </AvatarFallback>
-                </Avatar>
-                <View className="flex-1">
-                    <View className="flex-row justify-between items-center">
-                        <Text className="text-xl font-semibold">Rick Sanchez</Text>
-                        <Pencil className="text-muted-foreground" size={16} height={16} width={16}/>
+            <CardHeader className="flex-row items-center justify-between gap-4">
+                <View className="flex-row items-center gap-4">
+                    <Avatar alt="Avatar" className="w-16 h-16">
+                        <AvatarImage source={{uri: GITHUB_AVATAR_URI}}/>
+                        <AvatarFallback>
+                            <Text>RS</Text>
+                        </AvatarFallback>
+                    </Avatar>
+                    <View className="flex-1">
+                        <View className="flex-row items-center">
+                            <Text className="text-xl font-semibold">Rick Sanchez</Text>
+                            <Pencil className="text-muted-foreground mx-2" size={16} height={16} width={16}/>
+                        </View>
+                        <View className="flex-row items-center">
+                            <Text className="text-muted-foreground">Scientist</Text>
+                            <Pencil className="text-muted-foreground mx-2" size={16} height={16} width={16}/>
+                        </View>
                     </View>
-                    <View className="flex-row justify-between items-center">
-                        <Text className="text-muted-foreground">Scientist</Text>
-                        <Pencil className="text-muted-foreground" size={16} height={16} width={16}/>
-                    </View>
+                </View>
+                <View className="absolute top-25 right-0 mr-4">
+                    <ThemeToggle/>
                 </View>
             </CardHeader>
 
+
             {/* Buttons Section */}
             <View className="flex-row justify-around mt-4">
-                <Button>Share Location</Button>
-                <Button>Update Info</Button>
-                <Button>Message</Button>
+                <Button></Button>
+                <Button></Button>
+                <Button></Button>
             </View>
 
             {/* Placeholders Section */}
@@ -80,9 +89,9 @@ export default function UserProfileScreen() {
 
             {/* Footer Navigation */}
             <CardFooter className="flex-row justify-between mt-auto pb-4">
-                <Button>Messenger</Button>
-                <Button>Map</Button>
-                <Button>Profile</Button>
+                <Button></Button>
+                <Button></Button>
+                <Button></Button>
             </CardFooter>
         </View>
     );
