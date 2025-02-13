@@ -42,15 +42,11 @@ Install the following packages:
 npx expo install react-native-svg lucide-react-native
 ```
 
+Запустить!
 ```bash
-npx react-native run-android
+ npx expo start
 ```
 
-Для iOS:
-
-```bash
-npx react-native run-ios
-```
 4. Настройка переменных окружения
 Если проект использует переменные окружения (например, для API-ключей или конфигурации сервера), создайте файл .env в корне проекта и добавьте необходимые переменные. Пример:
 
