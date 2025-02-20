@@ -131,15 +131,7 @@ export default function RootLayout() {
           <Stack.Screen name="vstack" options={getHeaderOptions("VStack")} />
         </Stack>
 
-        <Fab
-          className="bottom-10 sm:right-10 right-6 p-4 z-0"
-          onPress={handleColorMode}
-        >
-          <Icon
-            as={colorMode === "light" ? SunIcon : MoonIcon}
-            className="text-typography-0"
-          />
-        </Fab>
+
       </GluestackUIProvider>
     </ColorModeContext.Provider>
     </>
