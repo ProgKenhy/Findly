@@ -1,53 +1,68 @@
-import React, {useState} from "react";
-import {StatusBar, Platform, StyleSheet} from "react-native";
-import {GluestackUIProvider} from "@/components/ui/gluestack-ui-provider";
-import {ColorModeContext, ColorModeProvider} from "./ColorModeContext"; // Import ColorModeContext
-import {createNativeStackNavigator} from "@react-navigation/native-stack"; // Native stack import
-import HomePage from "@/app/(tabs)/HomePage";
-import ProfilePage from "@/app/(tabs)/ProfilePage";
-import MessengerPage from "@/app/(tabs)/MessengerPage"
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { useColorScheme } from "react-native";
+import "../global.css";
 
-const NativeStack = createNativeStackNavigator(); // Renaming createNativeStackNavigator()
+export {
+  // Catch any errors thrown by the Layout component.
+  ErrorBoundary,
+} from "expo-router";
+
+export const unstable_settings = {
+  // Ensure that reloading on `/modal` keeps a back button present.
+  initialRouteName: "(tabs)",
+};
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-    const styles = StyleSheet.create({
-        header: {
-            backgroundColor: "#fff", // You can dynamically change this based on colorMode
-            borderBottomColor: "#E6E6E6",
-            borderBottomWidth: 1,
-        },
-    });
+  const [loaded, error] = useFonts({
+    // SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    ...FontAwesome.font,
+  });
 
-    return (
-        <>
-            <StatusBar style="dark"/>
-            <ColorModeProvider>
-                <GluestackUIProvider mode="light">
-                    <NativeStack.Navigator
-                        screenOptions={{
-                            headerStyle: styles.header,
-                            headerTintColor: "#000",
-                            headerShown: false,
-                        }}
-                    >
-                        <NativeStack.Screen
-                            name="HomePage"
-                            component={HomePage}
-                            options={{title: "Welcome"}}
-                        />
-                        <NativeStack.Screen
-                            name="ProfilePage"
-                            component={ProfilePage}
-                            options={{title: "Profile"}}
-                        />
-                        <NativeStack.Screen
-                            name="MessengerPage"
-                            component={MessengerPage}
-                            options={{title: "Messenger"}}
-                        />
-                    </NativeStack.Navigator>
-                </GluestackUIProvider>
-            </ColorModeProvider>
-        </>
-    );
+  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
+  return <RootLayoutNav />;
+}
+
+function RootLayoutNav() {
+  const colorScheme = useColorScheme();
+
+  return (
+    <GluestackUIProvider mode={(colorScheme ?? "light") as "light" | "dark"}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }}>
+          {/*<Stack.Screen name="signin" />*/}
+          {/*<Stack.Screen name="signup" />*/}
+          <Stack.Screen name="index" />
+          <Stack.Screen name="ProfilePage" />
+          <Stack.Screen name="MessengerPage" />
+        </Stack>
+      </ThemeProvider>
+    </GluestackUIProvider>
+  );
 }

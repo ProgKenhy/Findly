@@ -1,4 +1,3 @@
-// InboxPage.js
 import React from "react";
 import {Box, HStack} from "@/components/ui";
 import {Text, ScrollView} from "react-native";
@@ -10,7 +9,7 @@ const MessengerPage = () => {
                 <Text>Inbox</Text>
             </HStack>
             <ScrollView>
-                <Text>Message content here...</Text>
+                <Text className="color-white">Message content here...</Text>
             </ScrollView>
         </Box>
     );

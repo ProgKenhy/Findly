@@ -1,6 +1,7 @@
 import React from "react";
 import { HStack, Icon, Pressable, Text, VStack } from "@/components/ui";
 import MobileSidebarActionsheet from "./MobileSidebarActionsheet";
+import {router} from "expo-router";
 
 const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -16,6 +17,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
               onPress={() => {
                 if (tab.label !== "Listing" && tab.label !== "Filter") {
                   setActiveTab(tab.label);
+                  router.push(tab.label);
                 }
                 if (tab.label === "Listing") {
                   setModalVisible(true);
@@ -46,7 +48,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
                       : "text-typography-400"
                   }`}
                 >
-                  {tab.label}
+                  {tab.name}
                 </Text>
               </VStack>
             </Pressable>
