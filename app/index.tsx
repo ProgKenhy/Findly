@@ -2,8 +2,8 @@ import React, {useState, useEffect} from "react";
 import {StatusBar, Platform} from "react-native";
 import {Box} from "@/components/ui/box";
 import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs";
-import HomePage from "./HomePage";
 import {Home, MessageCircle, User} from "lucide-react-native";
+import {useNavigation} from "@react-navigation/native"; // Импортируем хук для навигации
 
 const bottomTabs = [
     {
@@ -23,6 +23,7 @@ const bottomTabs = [
 
 export default function Index() {
     const [activeTab, setActiveTab] = useState("Home");
+    const navigation = useNavigation(); // Используем хук useNavigation
 
     useEffect(() => {
         if (Platform.OS === "web") {
@@ -31,16 +32,19 @@ export default function Index() {
         }
     }, []);
 
+    // Обработчик для перехода между экранами
+    useEffect(() => {
+        if (activeTab === "Home") {
+            navigation.navigate("HomePage"); // Переход на HomePage
+        } else if (activeTab === "Profile") {
+            navigation.navigate("ProfilePage"); // Переход на ProfilePage
+        }
+    }, [activeTab, navigation]);
+
     return (
         <>
             <Box className="flex-1">
                 <StatusBar/>
-
-                <Box className="flex-1">
-                    {/* Conditional Rendering Based on Active Tab */}
-                    {activeTab === "Home" && <HomePage/>}
-                    {/* Add other page components here, like ProfilePage */}
-                </Box>
 
                 {/* Mobile Bottom Navigation */}
                 <Box className="h-[72px] items-center w-full flex md:hidden border-t border-outline-50">

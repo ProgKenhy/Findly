@@ -22,3 +22,5 @@ export const ColorModeProvider: React.FC = ({ children }) => {
     </ColorModeContext.Provider>
   );
 };
+
+export default ColorModeProvider;

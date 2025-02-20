@@ -9,6 +9,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack"; // Native stack import
 import HomePage from "@/app/HomePage";
 import ProfilePage from "@/app/ProfilePage";
+import MessengerPage from "@/app/MessengerPage"
 
 const NativeStack = createNativeStackNavigator(); // Renaming createNativeStackNavigator()
 
@@ -41,6 +42,11 @@ export default function RootLayout() {
                             name="ProfilePage"
                             component={ProfilePage}
                             options={{title: "Profile", presentation: "modal"}}
+                        />
+                        <NativeStack.Screen
+                            name="MessengerPage"
+                            component={MessengerPage}
+                            options={{title: "Messenger", presentation: "modal"}}
                         />
                     </NativeStack.Navigator>
                 </GluestackUIProvider>
