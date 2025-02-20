@@ -1,18 +1,19 @@
+// InboxPage.js
 import React from "react";
 import {Box, HStack} from "@/components/ui";
-import {ScrollView, Text} from "react-native";
+import {Text, ScrollView} from "react-native";
 
-const HomePage = () => {
+const MessengerPage = () => {
     return (
         <Box className="w-full">
             <HStack className="justify-between items-center">
-                <Text>Welcome to HomePage</Text>
+                <Text>Inbox</Text>
             </HStack>
             <ScrollView>
-                <Text>More content here...</Text>
+                <Text>Message content here...</Text>
             </ScrollView>
         </Box>
     );
 };
 
-export default HomePage;
+export default MessengerPage;

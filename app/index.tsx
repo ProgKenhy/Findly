@@ -1,28 +1,15 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {StatusBar, Platform} from "react-native";
 import {Box} from "@/components/ui/box";
 import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs";
-import {
-    Home,
-    MessageCircle,
-    User,
-} from "lucide-react-native";
-import MobileProfilePage from "./ProfilePage";
-import HomePage from "./HomePage"
+import HomePage from "./HomePage";
+import {Home, MessageCircle, User} from "lucide-react-native";
 
 const bottomTabs = [
     {
         icon: Home,
         label: "Home",
     },
-    // {
-    //     icon: SlidersHorizontal,
-    //     label: "Filter",
-    // },
-    // {
-    //     icon: Plus,
-    //     label: "Listing",
-    // },
     {
         icon: MessageCircle,
         label: "Inbox",
@@ -34,7 +21,9 @@ const bottomTabs = [
     },
 ];
 
-const HomestayPage = () => {
+export default function Index() {
+    const [activeTab, setActiveTab] = useState("Home");
+
     useEffect(() => {
         if (Platform.OS === "web") {
             document.body.style.overflow = "hidden";
@@ -42,20 +31,18 @@ const HomestayPage = () => {
         }
     }, []);
 
-    const [activeTab, setActiveTab] = React.useState("Home");
-
     return (
         <>
             <Box className="flex-1">
                 <StatusBar/>
 
                 <Box className="flex-1">
-                    <MobileProfilePage isActive={activeTab === "Profile"}/>
-
-                    <HomePage setActiveTab={setActiveTab} activeTab={activeTab} />
+                    {/* Conditional Rendering Based on Active Tab */}
+                    {activeTab === "Home" && <HomePage/>}
+                    {/* Add other page components here, like ProfilePage */}
                 </Box>
 
-                {/* mobile bottom tabs */}
+                {/* Mobile Bottom Navigation */}
                 <Box className="h-[72px] items-center w-full flex md:hidden border-t border-outline-50">
                     <MobileBottomTabs
                         activeTab={activeTab}
@@ -63,9 +50,7 @@ const HomestayPage = () => {
                         bottomTabs={bottomTabs}
                     />
                 </Box>
-                {/* )} */}
             </Box>
         </>
     );
-};
-export default HomestayPage;
+}
