@@ -7,9 +7,9 @@ import {Icon, ChevronLeftIcon} from "@/components/ui/icon";
 import {ColorModeContext, ColorModeProvider} from "./ColorModeContext"; // Import ColorModeContext
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack"; // Native stack import
-import HomePage from "@/app/HomePage";
-import ProfilePage from "@/app/ProfilePage";
-import MessengerPage from "@/app/MessengerPage"
+import HomePage from "@/app/(tabs)/HomePage";
+import ProfilePage from "@/app/(tabs)/ProfilePage";
+import MessengerPage from "@/app/(tabs)/MessengerPage"
 
 const NativeStack = createNativeStackNavigator(); // Renaming createNativeStackNavigator()
 

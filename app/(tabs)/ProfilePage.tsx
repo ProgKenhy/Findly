@@ -10,7 +10,7 @@ import {
     AvatarImage,
 } from "@/components/ui/avatar"
 import {cssInterop} from "nativewind";
-import {ColorModeContext} from "./ColorModeContext";
+import {ColorModeContext} from "../ColorModeContext";
 import {HStack} from "@/components/ui/hstack";
 import {VStack} from "@/components/ui/vstack";
 import {Feather} from '@expo/vector-icons';
