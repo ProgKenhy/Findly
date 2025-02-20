@@ -1,34 +1,32 @@
 import React, {useEffect} from "react";
 import {StatusBar, Platform} from "react-native";
-import {Box} from "../components/ui";
-import MobileBottomTabs from "./MobileBottomTabs";
+import {Box} from "@/components/ui/box";
+import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs";
 import {
-    Plus,
     Home,
     MessageCircle,
     User,
-    SlidersHorizontal,
 } from "lucide-react-native";
 import MobileProfilePage from "./ProfilePage";
-import Explorepage from "./ExplorePage";
+import HomePage from "./HomePage"
 
 const bottomTabs = [
     {
         icon: Home,
         label: "Home",
     },
-    {
-        icon: SlidersHorizontal,
-        label: "Filter",
-    },
-    {
-        icon: Plus,
-        label: "Listing",
-    },
+    // {
+    //     icon: SlidersHorizontal,
+    //     label: "Filter",
+    // },
+    // {
+    //     icon: Plus,
+    //     label: "Listing",
+    // },
     {
         icon: MessageCircle,
         label: "Inbox",
-        disabled: true,
+        disabled: false,
     },
     {
         icon: User,
@@ -54,9 +52,9 @@ const HomestayPage = () => {
                 <Box className="flex-1">
                     <MobileProfilePage isActive={activeTab === "Profile"}/>
 
-                    <Explorepage setActiveTab={setActiveTab} activeTab={activeTab}/>
-
+                    <HomePage setActiveTab={setActiveTab} activeTab={activeTab} />
                 </Box>
+
                 {/* mobile bottom tabs */}
                 <Box className="h-[72px] items-center w-full flex md:hidden border-t border-outline-50">
                     <MobileBottomTabs
@@ -65,8 +63,8 @@ const HomestayPage = () => {
                         bottomTabs={bottomTabs}
                     />
                 </Box>
+                {/* )} */}
             </Box>
-            {/* )} */}
         </>
     );
 };

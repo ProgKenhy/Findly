@@ -66,6 +66,7 @@ export default function RootLayout() {
                 <GluestackUIProvider mode={colorMode}>
                     <Stack>
                         <Stack.Screen name="index" options={{headerShown: false}}/>
+
                     </Stack>
                 </GluestackUIProvider>
             </ColorModeContext.Provider>

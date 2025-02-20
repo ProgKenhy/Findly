@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { HStack, Icon, Pressable, Text, VStack } from "../components/ui";
-import ListYourPlaceModal from "./main-content/ListYourPlaceModal";
+import React from "react";
+import { HStack, Icon, Pressable, Text, VStack } from "@/components/ui";
 import MobileSidebarActionsheet from "./MobileSidebarActionsheet";
-import { ThemeContext } from "@/App";
 
 const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
-  const { colorMode } = useContext(ThemeContext);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [actionsheetVisible, setActionsheetVisible] = React.useState(false);
 
@@ -57,10 +54,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
         })}
       </HStack>
 
-      <ListYourPlaceModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-      />
+
 
       <MobileSidebarActionsheet
         actionsheetVisible={actionsheetVisible}
@@ -70,4 +64,6 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
   );
 };
 
-export default MobileBottomTabs;
+MobileBottomTabs.displayName = 'MobileBottomTabs';
+
+export { MobileBottomTabs };

@@ -8,10 +8,7 @@ import {
 } from "@/components/ui";
 
 
-const MobileSidebarActionsheet = ({
-                                      actionsheetVisible,
-                                      setActionsheetVisible,
-                                  }: any) => {
+const MobileSidebarActionsheet = ({actionsheetVisible, setActionsheetVisible,}: any) => {
     const handleClose = () => {
         setActionsheetVisible(false);
     };
