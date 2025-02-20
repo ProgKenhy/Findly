@@ -3,12 +3,7 @@ import {useRouter} from "expo-router";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Box} from "@/components/ui/box";
 import {Image as ExpoImage} from "expo-image";
-import {
-    Avatar,
-    AvatarBadge,
-    AvatarFallbackText,
-    AvatarImage,
-} from "@/components/ui/avatar"
+import {Avatar, AvatarBadge, AvatarFallbackText, AvatarImage} from "@/components/ui/avatar";
 import {cssInterop} from "nativewind";
 import {ColorModeContext} from "../ColorModeContext";
 import {HStack} from "@/components/ui/hstack";
@@ -22,12 +17,10 @@ import {Pressable} from "@/components/ui/pressable";
 
 const avatarPath = '@/assets/images/avatar.png';
 
-
 cssInterop(SafeAreaView, {className: "style"});
 cssInterop(ExpoImage, {className: "style"});
 
-
-export default function ProfilePage() {
+export default function ProfileScreen() {
     const {colorMode, toggleColorMode} = useContext(ColorModeContext);
     const router = useRouter();
 
@@ -35,16 +28,14 @@ export default function ProfilePage() {
         <SafeAreaView className="flex-1 bg-background-0 relative">
             <Box className="bg-background-50 flex-1 p-6">
                 <HStack className="justify-between items-center" space="md" reversed={false}>
-                    {/* Левая часть - Аватар */}
                     <Box className="pr-0">
                         <Avatar size="xl">
                             <AvatarFallbackText>Avatar</AvatarFallbackText>
-                            <AvatarImage
-                                source={require(avatarPath)}
-                            />
+                            <AvatarImage source={require(avatarPath)} />
                             <AvatarBadge/>
                         </Avatar>
                     </Box>
+
                     <Box>
                         <VStack className="mb-1">
                             <Text className="font-bold text-lg mr-2">моша мисин</Text>
@@ -52,11 +43,8 @@ export default function ProfilePage() {
                         </VStack>
                     </Box>
 
-                    {/* Правая часть - Информация и иконки */}
                     <Box className="flex-1">
-                        {/* Верхний ряд - 3 иконки */}
                         <HStack className="justify-center items-center space-x-4">
-                            {/* Иконка смены темы */}
                             <Pressable onPress={toggleColorMode}>
                                 <Icon
                                     as={colorMode === "light" ? SunIcon : MoonIcon}
@@ -65,11 +53,13 @@ export default function ProfilePage() {
                                 />
                             </Pressable>
 
-                            {/* Иконка настроек */}
-                            <Feather name="settings" className="mx-2"
-                                     size={30} color={colorMode === "light" ? "black" : "white"}/>
+                            <Feather
+                                name="settings"
+                                className="mx-2"
+                                size={30}
+                                color={colorMode === "light" ? "black" : "white"}
+                            />
 
-                            {/* Иконка выхода */}
                             <MaterialCommunityIcons
                                 name="logout"
                                 size={30}
@@ -77,9 +67,7 @@ export default function ProfilePage() {
                             />
                         </HStack>
 
-                        {/* Нижний ряд - 2 иконки */}
                         <HStack className="justify-center items-center mt-4">
-                            {/* Иконка глаза */}
                             <AntDesign
                                 name="eyeo"
                                 size={30}
@@ -87,7 +75,6 @@ export default function ProfilePage() {
                                 className="mr-2"
                             />
 
-                            {/* Иконка часов */}
                             <Feather
                                 name="clock"
                                 size={30}
@@ -104,4 +91,3 @@ export default function ProfilePage() {
         </SafeAreaView>
     );
 }
-

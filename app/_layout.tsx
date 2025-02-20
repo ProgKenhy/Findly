@@ -1,11 +1,7 @@
 import React, {useState} from "react";
 import {StatusBar, Platform, StyleSheet} from "react-native";
-import {Stack as ExpoStack} from "expo-router";  // Renaming the imported Stack
 import {GluestackUIProvider} from "@/components/ui/gluestack-ui-provider";
-import {Pressable} from "@/components/ui/pressable";
-import {Icon, ChevronLeftIcon} from "@/components/ui/icon";
 import {ColorModeContext, ColorModeProvider} from "./ColorModeContext"; // Import ColorModeContext
-import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack"; // Native stack import
 import HomePage from "@/app/(tabs)/HomePage";
 import ProfilePage from "@/app/(tabs)/ProfilePage";
@@ -31,6 +27,7 @@ export default function RootLayout() {
                         screenOptions={{
                             headerStyle: styles.header,
                             headerTintColor: "#000",
+                            headerShown: false,
                         }}
                     >
                         <NativeStack.Screen
@@ -41,12 +38,12 @@ export default function RootLayout() {
                         <NativeStack.Screen
                             name="ProfilePage"
                             component={ProfilePage}
-                            options={{title: "Profile", presentation: "modal"}}
+                            options={{title: "Profile"}}
                         />
                         <NativeStack.Screen
                             name="MessengerPage"
                             component={MessengerPage}
-                            options={{title: "Messenger", presentation: "modal"}}
+                            options={{title: "Messenger"}}
                         />
                     </NativeStack.Navigator>
                 </GluestackUIProvider>
