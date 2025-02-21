@@ -13,6 +13,7 @@ import {useColorScheme} from "react-native";
 import {ColorModeContext} from "@/app/ColorModeContext";
 import {ColorModeProvider} from "@/app/ColorModeContext";
 import "../global.css";
+import {MobileBottomTabsLayout} from "@/components/custom/MobileBottomTabsLayout";
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -58,11 +59,13 @@ function RootLayoutNav() {
         <ColorModeProvider>
             <GluestackUIProvider mode={colorMode}>
                 <ThemeProvider value={colorMode === "dark" ? DarkTheme : DefaultTheme}>
-                    <Stack screenOptions={{ headerShown: false }}>
-                        <Stack.Screen name="index" />
-                        <Stack.Screen name="ProfilePage" />
-                        <Stack.Screen name="MessengerPage" />
-                    </Stack>
+                    <MobileBottomTabsLayout>
+                        <Stack screenOptions={{headerShown: false}}>
+                            <Stack.Screen name="index"/>
+                            <Stack.Screen name="ProfilePage"/>
+                            <Stack.Screen name="MessengerPage"/>
+                        </Stack>
+                    </MobileBottomTabsLayout>
                 </ThemeProvider>
             </GluestackUIProvider>
         </ColorModeProvider>

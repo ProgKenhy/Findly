@@ -15,7 +15,7 @@ import {Icon, MoonIcon, SunIcon} from '@/components/ui/icon';
 import {StyleSheet, Text} from "react-native";
 import {Pressable} from "@/components/ui/pressable";
 import {Home, MessageCircle, User} from "lucide-react-native";
-import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs/MobileBottomTabs";
+import {MobileBottomTabs} from "@/components/custom/MobileBottomTabsLayout/MobileBottomTabs";
 
 const avatarPath = '@/assets/images/avatar.png';
 
@@ -23,28 +23,9 @@ cssInterop(SafeAreaView, {className: "style"});
 cssInterop(ExpoImage, {className: "style"});
 
 
-const bottomTabs = [
-    {
-        icon: Home,
-        label: "/",
-        name: 'Home'
-    },
-    {
-        icon: MessageCircle,
-        label: "MessengerPage",
-        name: 'Messages'
-    },
-    {
-        icon: User,
-        label: "ProfilePage",
-        name: 'Profile'
-    },
-];
-
 
 export default function ProfileScreen() {
     const {colorMode, toggleColorMode} = useContext(ColorModeContext);
-    const [activeTab, setActiveTab] = useState("ProfilePage");
     const router = useRouter();
 
     return (
@@ -106,14 +87,6 @@ export default function ProfileScreen() {
                         </HStack>
                     </Box>
                 </HStack>
-            </Box>
-
-            <Box className="h-[72px] items-center w-full border-t border-outline-50 absolute bottom-0">
-                <MobileBottomTabs
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                    bottomTabs={bottomTabs}
-                />
             </Box>
         </SafeAreaView>
     );
