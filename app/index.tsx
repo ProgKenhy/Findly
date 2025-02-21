@@ -3,7 +3,7 @@ import {Button, ButtonText} from "@/components/ui/button";
 import {router} from "expo-router";
 import {SafeAreaView} from "@/components/ui/safe-area-view";
 import {VStack} from "@/components/ui/vstack";
-import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs";
+import {MobileBottomTabs} from "@/components/custom/MobileBottomTabs/MobileBottomTabs";
 import {Box} from "@/components/ui";
 import {Home, MessageCircle, User} from "lucide-react-native";
 
