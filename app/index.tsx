@@ -29,8 +29,7 @@ const index = () => {
     const [activeTab, setActiveTab] = useState("Home");
 
     return (
-        <SafeAreaView className="md:flex flex-col items-center justify-center md:w-full h-full">
-            <VStack className="p-2 md:max-w-[440px] w-full" space="xl">
+        <Box className='flex-1'>
                 {/*<Button
                     onPress={() => {
                         router.push("profile");
@@ -38,15 +37,15 @@ const index = () => {
                 >
                     <ButtonText>Profile</ButtonText>
                 </Button> */}
-                <Box className="h-[72px] items-center w-full flex md:hidden border-t border-outline-50">
+                <Box className="h-[72px] items-center w-full border-t border-outline-50 absolute bottom-0">
                     <MobileBottomTabs
                         activeTab={activeTab}
                         setActiveTab={setActiveTab}
                         bottomTabs={bottomTabs}
                     />
                 </Box>
-            </VStack>
-        </SafeAreaView>
+
+        </Box>
     );
 };
 
